@@ -21,6 +21,7 @@ class Options:
     n_buckets: int = 256
     n_buckets3: int = 256
     n_rmulti2: int = 1
+    k: typing.Optional[int] = 32
 
 
 def check_configuration(
@@ -61,6 +62,8 @@ def create_command_line(
         tmpdir if tmpdir.endswith("/") else (tmpdir + "/"),
         "-d",
         dstdir if dstdir.endswith("/") else (dstdir + "/"),
+        "-k",
+        str(options.k),
     ]
     if tmp2dir is not None:
         args.append("-2")
